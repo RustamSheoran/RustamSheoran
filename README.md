@@ -223,7 +223,7 @@ Consistency Verification
 </p>
 
 ---
+## 📈 Activity  
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=RustamSheoran&show_icons=true&hide_border=true&include_all_commits=true&count_private=true" />
-</p>
+Consistent work across systems programming, distributed systems, and backend infrastructure.  
+Focused on building from first principles rather than using abstractions.

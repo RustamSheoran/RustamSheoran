@@ -29,54 +29,57 @@
 - 🌍 Top **4.28% globally**  
 - ⚠️ Less active currently  
 ---
-
 ## 🚀 Featured Projects
 
-### 🧩 OS-C
+### 🧩 OS-C  
 
-> 32-bit x86 operating system kernel
+> Freestanding x86_64 operating system kernel (C + Assembly)  
 
-* Paging, memory management (PMM)
-* GDT/IDT, interrupt handling
-* Basic shell + system calls
+* Physical + virtual memory management (PMM, paging, higher-half kernel)  
+* CPU initialization (GDT/IDT), interrupt handling, timer setup  
+* Syscall interface and serial interactive shell  
+* Runs as a UEFI application with full control over runtime  
 
-🔗 https://github.com/RustamSheoran/OS-C
-
----
-
-### 🖥️ Shell-C++
-
-> Custom Unix-like shell
-
-* AST-based command parsing
-* Pipes, redirection, job control
-
-🔗 https://github.com/RustamSheoran/shell-c-plusplus
+🔗 https://github.com/RustamSheoran/OS-C  
 
 ---
 
-### 🎨 ASCII-CAM
+### 🖥️ Shell-C++  
 
-> Real-time video → ASCII rendering engine
+> Modern C++20 Unix-like shell with AST-based execution  
 
-* Frame processing & ASCII mapping
-* Rendering pipeline optimization
-* Performance-focused transformations
+* Full AST-based parsing with operator precedence  
+* Pipelines, redirection, and process control via file descriptors  
+* Job control (fg/bg, signals, process groups)  
+* Interactive shell (history, completion, editing)  
 
-🔗 https://github.com/RustamSheoran/ASCII-CAM
+🔗 https://github.com/RustamSheoran/shell-c-plusplus  
 
 ---
 
-### 🧪 Distributed Systems Testing (In Progress)
+### 🎨 ASCII-CAM  
 
-> Jepsen-inspired framework for validating correctness under failures
+> Real-time ASCII rendering experiment (browser-based)  
 
-* Fault injection (network partitions, node crashes)
-* Consistency validation (linearizability, eventual consistency)
-* Distributed workload simulation
-* Go (engine) + Python (analysis)
+* Live camera → ASCII conversion using Canvas API  
+* Adjustable resolution, character sets, and rendering parameters  
+* 60+ FPS rendering with performance monitoring  
+* Image/video export and interactive controls  
 
-⚠️ Private repository
+🔗 https://github.com/RustamSheoran/ASCII-CAM  
+
+---
+
+### 🧪 Distributed Systems Testing (In Progress)  
+
+> Jepsen-inspired framework for testing correctness under failures  
+
+* Fault injection (network partitions, node crashes, latency)  
+* Consistency validation (linearizability, eventual consistency)  
+* Distributed workload simulation across nodes  
+* Go (core engine) + Python (analysis & tooling)  
+
+⚠️ Private repository  
 
 ---
 

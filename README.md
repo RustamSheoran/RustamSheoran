@@ -16,70 +16,146 @@
 
 ---
 
-## 🏆 Competitive Programming  
+## 🏆 Competitive Programming
 
-### CodeChef  
-- ⭐ **5★ (2132 rating, Division 1)**  
-- 🌍 **Global Rank: 622**  
-- 🇮🇳 **Country Rank: 335 (India)**  
-- 📊 Top ~**0.1–0.2% globally**  
+### CodeChef
 
-### LeetCode  
-- 🟢 **Knight (1903 rating)**  
-- 🌍 Top **4.28% globally**  
-- ⚠️ Less active currently  
+* ⭐ **5★ (2132 rating, Division 1)**
+* 🌍 **Global Rank: 622**
+* 🇮🇳 **Country Rank: 335 (India)**
+* 📊 Top ~**0.1–0.2% globally**
+
+### LeetCode
+
+* 🟢 **Knight (1903 rating)**
+* 🌍 Top **4.28% globally**
+* ⚠️ Less active currently
+
 ---
+
 ## 🚀 Featured Projects
 
-### 🧩 OS-C  
+### 🧩 OS-C
 
-> Freestanding x86_64 operating system kernel (C + Assembly)  
+> Freestanding x86_64 operating system kernel (C + Assembly)
 
-* Physical + virtual memory management (PMM, paging, higher-half kernel)  
-* CPU initialization (GDT/IDT), interrupt handling, timer setup  
-* Syscall interface and serial interactive shell  
-* Runs as a UEFI application with full control over runtime  
+```
+UEFI Firmware
+     │
+     ▼
+Bootloader (kernel.efi)
+     │
+     ▼
+Memory Init ──► PMM ──► Paging (PML4)
+     │
+     ▼
+CPU Setup ──► GDT / IDT ──► Interrupts (PIC/PIT)
+     │
+     ▼
+Syscall Interface (syscall/sysret)
+     │
+     ▼
+Kernel Space (Higher Half)
+     │
+     ▼
+Interactive Shell (Serial I/O)
+```
 
-🔗 https://github.com/RustamSheoran/OS-C  
+* Full control over memory (PMM + virtual paging, higher-half kernel)
+* CPU initialization (GDT/IDT), interrupt handling, timer configuration
+* Syscall interface bridging user ↔ kernel space
+* UEFI-based boot with no libc/runtime dependencies
 
----
+⚡ Demonstrates direct control over hardware, memory, and execution flow
 
-### 🖥️ Shell-C++  
-
-> Modern C++20 Unix-like shell with AST-based execution  
-
-* Full AST-based parsing with operator precedence  
-* Pipelines, redirection, and process control via file descriptors  
-* Job control (fg/bg, signals, process groups)  
-* Interactive shell (history, completion, editing)  
-
-🔗 https://github.com/RustamSheoran/shell-c-plusplus  
-
----
-
-### 🎨 ASCII-CAM  
-
-> Real-time ASCII rendering experiment (browser-based)  
-
-* Live camera → ASCII conversion using Canvas API  
-* Adjustable resolution, character sets, and rendering parameters  
-* 60+ FPS rendering with performance monitoring  
-* Image/video export and interactive controls  
-
-🔗 https://github.com/RustamSheoran/ASCII-CAM  
+🔗 https://github.com/RustamSheoran/OS-C
 
 ---
 
-### 🧪 Distributed Systems Testing (In Progress)  
+### 🖥️ Shell-C++
 
-> Jepsen-inspired framework for testing correctness under failures  
+> Modern C++20 Unix-like shell with AST-based execution
 
-* Fault injection (network partitions, node crashes, latency)  
-* Consistency validation (linearizability, eventual consistency)  
-* Distributed workload simulation across nodes  
-* Go (core engine) + Python (analysis & tooling)  
+```
+Input
+  │
+  ▼
+Lexer → Parser (AST) → Execution Engine
+                         │
+                         ▼
+                Processes / Syscalls
+                         │
+                         ▼
+              Pipes / Redirection / Signals
+```
 
-⚠️ Private repository  
+* AST-based parsing with operator precedence
+* Pipelines & I/O redirection via file descriptors
+* Job control (fg/bg, signals, process groups)
+* Interactive shell (history, completion, editing)
+
+⚡ Explores how command execution maps to OS-level process control
+
+🔗 https://github.com/RustamSheoran/shell-c-plusplus
+
+---
+
+### 🎨 ASCII-CAM
+
+> Real-time ASCII rendering experiment (browser-based)
+
+```
+Camera Feed
+     │
+     ▼
+Frame Buffer
+     │
+     ▼
+ASCII Mapping (char intensity)
+     │
+     ▼
+Canvas Rendering (GPU/CPU)
+```
+
+* Live camera → ASCII conversion using Canvas API
+* Adjustable resolution + character sets
+* 60+ FPS rendering with performance tracking
+* Image/video export
+
+⚡ Built to explore real-time rendering and performance in the browser
+
+🔗 https://github.com/RustamSheoran/ASCII-CAM
+
+---
+
+### 🧪 Distributed Systems Testing (In Progress)
+
+> Jepsen-inspired framework for validating correctness under failures
+
+```
+Client Workload
+       │
+       ▼
+Distributed Cluster
+       │
+       ▼
+Fault Injection Layer
+(network partitions / crashes / latency)
+       │
+       ▼
+Observability + Logs
+       │
+       ▼
+Consistency Verification
+(linearizability / eventual consistency)
+```
+
+* Fault injection (network partitions, crashes, latency)
+* Consistency validation (linearizability, eventual consistency)
+* Distributed workload simulation
+* Go (engine) + Python (analysis layer)
+
+⚠️ Private repository
 
 ---
 
@@ -88,10 +164,10 @@
 ### ⚙️ Systems & Low-Level
 
 <p align="left">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" width="40" height="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" width="40" height="40"/>
-<img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="40" height="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" width="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" width="40"/>
+<img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" width="40"/>
 </p>
 
 ---
@@ -99,9 +175,9 @@
 ### 🧠 AI / ML
 
 <p align="left">
-<img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" width="40" height="40"/>
-<img src="https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg" width="40" height="40"/>
-<img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" width="40" height="40"/>
+<img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" width="40"/>
+<img src="https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg" width="40"/>
+<img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" width="40"/>
 </p>
 
 ---
@@ -109,10 +185,10 @@
 ### 🌐 Backend & Infra
 
 <p align="left">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" width="40" height="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" width="40" height="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" width="40" height="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" width="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" width="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" width="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" width="40"/>
 </p>
 
 ---
@@ -120,9 +196,9 @@
 ### 🎨 Frontend
 
 <p align="left">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" width="40" height="40"/>
-<img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" width="40" height="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" width="40"/>
+<img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" width="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" width="40"/>
 </p>
 
 ---
@@ -138,15 +214,12 @@
 ## 📫 Connect with me
 
 <p align="left">
-
 <a href="https://linkedin.com/in/rustamsheoran" target="blank">
-<img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="30" width="40" />
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="30"/>
 </a>
-
 <a href="https://www.codechef.com/users/ginge" target="blank">
-<img align="center" src="https://cdn.simpleicons.org/codechef" height="30" width="40" />
+<img src="https://cdn.simpleicons.org/codechef" height="30"/>
 </a>
-
 </p>
 
 ---

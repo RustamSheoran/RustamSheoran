@@ -1,43 +1,34 @@
-<h1 align="center">Hi 👋, I'm Rustam Sheoran</h1>
-<h3 align="center">Systems Engineer | OS Developer | Distributed Systems</h3>
+# Hi, I'm Rustam Sheoran 👋
+
+**Systems Engineer · Solana Developer · Competitive Programmer**
+
+Started building seriously at 10. Eight years of consistent GitHub contributions. Currently 18, gap year before university — spending it going deep rather than wide.
+
+I build systems from the ground up — operating systems, shells, distributed infrastructure, and Solana programs. Not as exercises. As the actual thing.
 
 ---
 
-* 🎓 **18 years old, high school graduate (gap year)**
-* 🔭 I’m currently working on **Jepsen-inspired distributed systems testing framework (Go + Python)**
-* 🌱 I’m currently learning **Machine Learning, Distributed Systems, Advanced OS Design**
-* 👯 I’m looking to collaborate on **low-level systems (OS, compilers, networking, infra)**
-* 🤝 I’m looking for help with **advanced OS concepts (memory management, schedulers, filesystems)**
-* 👨‍💻 All of my projects are available at
-  👉 https://github.com/RustamSheoran
-* 💬 Ask me about **Operating Systems, C/C++, System Design, Backend Engineering**
-* 📫 How to reach me **[rustam98137@gmail.com](mailto:rustam98137@gmail.com)**
-* ⚡ Fun fact **I break systems to understand how they actually work.**
+## 🔭 What I'm Working On
+
+- **Jepsen-inspired distributed systems testing framework** — fault injection (network partitions, crashes, latency), linearizability validation, adversarial workload simulation *(private)*
+- **Rust Password Manager** — security-focused vault with Argon2id, ChaCha20Poly1305, secret-aware memory, CLI + TUI
+- **SolScope React Native** — rewrite of my Solana wallet intelligence platform
 
 ---
 
 ## 🏆 Competitive Programming
 
-### CodeChef
-
-* ⭐ **5★ (2132 rating, Division 1)**
-* 🌍 **Global Rank: 622**
-* 🇮🇳 **Country Rank: 335 (India)**
-* 📊 Top ~**0.1–0.2% globally**
-
-### LeetCode
-
-* 🟢 **Knight (1903 rating)**
-* 🌍 Top **4.28% globally**
-* ⚠️ Less active currently
+**CodeChef**
+- ⭐ 6★ · **2239 rating** · Division 1
+- 🌍 Global Rank: **301** · 🇮🇳 Country Rank: **121**
+- 📈 [codechef.com/users/ginge](https://www.codechef.com/users/ginge)
 
 ---
 
 ## 🚀 Featured Projects
 
-### 🧩 OS-C
-
-> Freestanding x86_64 operating system kernel (C + Assembly)
+### 🖥️ [OS-C](https://github.com/RustamSheoran/OS-C)
+Freestanding x86_64 operating system kernel written in C and Assembly.
 
 ```
 UEFI Firmware
@@ -61,76 +52,69 @@ Kernel Space (Higher Half)
 Interactive Shell (Serial I/O)
 ```
 
-* Full control over memory (PMM + virtual paging, higher-half kernel)
-* CPU initialization (GDT/IDT), interrupt handling, timer configuration
-* Syscall interface bridging user ↔ kernel space
-* UEFI-based boot with no libc/runtime dependencies
+- Full physical memory manager + virtual paging (PML4), higher-half kernel
+- CPU initialization — GDT/IDT, interrupt handling, timer configuration
+- Syscall interface bridging user ↔ kernel space
+- UEFI-based boot with zero libc or runtime dependencies
 
-⚡ Demonstrates direct control over hardware, memory, and execution flow
-
-🔗 https://github.com/RustamSheoran/OS-C
+**Stack:** C · x86_64 Assembly · UEFI
 
 ---
 
-### 🖥️ Shell-C++
-
-> Modern C++20 Unix-like shell with AST-based execution
+### 🖥️ [Shell-C++](https://github.com/RustamSheoran/Shell-C-plusplus)
+Modern C++20 Unix-like shell with AST-based execution engine.
 
 ```
 Input
   │
   ▼
 Lexer → Parser (AST) → Execution Engine
-                         │
-                         ▼
-                Processes / Syscalls
-                         │
-                         ▼
-              Pipes / Redirection / Signals
+                              │
+                              ▼
+                   Processes / Syscalls
+                              │
+                              ▼
+                 Pipes / Redirection / Signals
 ```
 
-* AST-based parsing with operator precedence
-* Pipelines & I/O redirection via file descriptors
-* Job control (fg/bg, signals, process groups)
-* Interactive shell (history, completion, editing)
+- AST-based parsing with operator precedence
+- Pipelines and I/O redirection via file descriptors
+- Job control — fg/bg, signals, process groups
+- Interactive shell with history, completion, and editing
 
-⚡ Explores how command execution maps to OS-level process control
-
-🔗 https://github.com/RustamSheoran/shell-c-plusplus
+**Stack:** C++20 · POSIX · Unix syscalls
 
 ---
 
-### 🎨 ASCII-CAM
+### 🔐 [Rust Password Manager](https://github.com/RustamSheoran/Rust-Password-Manager)
+Security-focused password vault with a CLI and terminal UI.
 
-> Real-time ASCII rendering experiment (browser-based)
+- **Crypto:** Argon2id for key derivation → ChaCha20Poly1305 for authenticated encryption
+- **Memory:** `secrecy::SecretString` and zeroize-based cleanup for all sensitive in-memory data
+- **Storage:** encrypted vault — no plaintext site names, usernames, or passwords on disk
+- **TUI:** fuzzy search, auto-hide on focus switch, clipboard auto-clear after 15 seconds, auto-lock on inactivity
+- **Tests:** crypto round-trips, wrong-password rejection, plaintext regression checks, Unix permission enforcement
 
-```
-Camera Feed
-     │
-     ▼
-Frame Buffer
-     │
-     ▼
-ASCII Mapping (char intensity)
-     │
-     ▼
-Canvas Rendering (GPU/CPU)
-```
-
-* Live camera → ASCII conversion using Canvas API
-* Adjustable resolution + character sets
-* 60+ FPS rendering with performance tracking
-* Image/video export
-
-⚡ Built to explore real-time rendering and performance in the browser
-
-🔗 https://github.com/RustamSheoran/ASCII-CAM
+**Stack:** Rust · Argon2id · ChaCha20Poly1305 · ratatui · crossterm
 
 ---
 
-### 🧪 Distributed Systems Testing (In Progress)
+### 🔭 [SolScope Android](https://github.com/RustamSheoran/solscope-android)
+Solana wallet intelligence platform — analyzes on-chain activity and generates algorithmic risk scores.
 
-> Jepsen-inspired framework for validating correctness under failures
+- Custom JSON-RPC 2.0 client built from scratch — no heavy SDKs, direct Solana Mainnet communication
+- Weighted heuristic risk engine: account age, balance patterns, transaction history, asset diversity → 0–100 safety score
+- Clean Architecture + MVVM, Kotlin Coroutines and Flow throughout
+- Custom Glassmorphic design system in Jetpack Compose
+
+Deprecated Android codebase — full React Native rewrite in progress.
+
+**Stack:** Kotlin · Jetpack Compose · OkHttp · Kotlinx Serialization · Solana JSON-RPC
+
+---
+
+### 🧪 Distributed Systems Testing Framework *(Private)*
+Jepsen-inspired framework for validating correctness under adversarial conditions.
 
 ```
 Client Workload
@@ -140,90 +124,73 @@ Distributed Cluster
        │
        ▼
 Fault Injection Layer
-(network partitions / crashes / latency)
+(network partitions · crashes · latency injection)
        │
        ▼
 Observability + Logs
        │
        ▼
 Consistency Verification
-(linearizability / eventual consistency)
+(linearizability · eventual consistency)
 ```
 
-* Fault injection (network partitions, crashes, latency)
-* Consistency validation (linearizability, eventual consistency)
-* Distributed workload simulation
-* Go (engine) + Python (analysis layer)
-
-⚠️ Private repository
+- Fault injection — network partitions, process crashes, latency injection
+- Linearizability validation under adversarial workloads
+- Distributed workload simulation across multiple nodes
 
 ---
 
-## 🧰 Tech Stack
+### 🎨 [ASCII-CAM](https://github.com/RustamSheoran/ASCII-CAM)
+Real-time browser camera feed converted to ASCII art via Canvas API.
 
-### ⚙️ Systems & Low-Level
+- Live camera → ASCII conversion with adjustable resolution and character sets
+- 60+ FPS rendering with performance tracking
+- Image and video export
 
-<p align="left">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" width="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" width="40"/>
-<img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" width="40"/>
-</p>
+**Stack:** TypeScript · React · Canvas API
 
 ---
 
-### 🧠 AI / ML
+## 🧰 What I Work With
 
-<p align="left">
-<img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" width="40"/>
-<img src="https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg" width="40"/>
-<img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" width="40"/>
-</p>
+**Systems & Low-Level**
+`C` `C++20` `x86_64 Assembly` `Rust` `POSIX` `Linux`
 
----
+**Solana / Web3**
+`Rust` `Anchor` `Solana JSON-RPC` `PDAs` `SPL Tokens` `DeFi primitives`
 
-### 🌐 Backend & Infra
+**Backend & Infra**
+`Node.js` `TypeScript` `Docker` `Kubernetes` `Terraform` `CI/CD` `Kafka` `PostgreSQL`
 
-<p align="left">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" width="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" width="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" width="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" width="40"/>
-</p>
+**AI / ML**
+`PyTorch` `Transformers` `RAG` `Agents` `Fine-tuning` *(IIT Indore — Diploma in AI & Data Science)*
+
+**Mobile**
+`Kotlin` `Jetpack Compose` `React Native`
 
 ---
 
-### 🎨 Frontend
+## 📚 How I Learn
 
-<p align="left">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" width="40"/>
-<img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" width="40"/>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" width="40"/>
-</p>
+I design structured curricula across domains — web/backend internals, DevOps infrastructure (containers through Firecracker sandboxing), Solana/Web3, and AI systems — and implement as I go. Not passive consumption.
 
----
+Current deep focus: Solana ecosystem (programs, DeFi mechanics, infrastructure) and Rust systems programming.
 
-## ⚡ Engineering Focus
-
-* Systems programming & low-level architecture
-* Distributed systems & fault tolerance
-* Performance and correctness over abstraction
+Upcoming: contributing to [Omarchy](https://github.com/basecamp/omarchy) — systems/Linux tooling.
 
 ---
 
-## 📫 Connect with me
+## 📊 Activity
 
-<p align="left">
-<a href="https://linkedin.com/in/rustamsheoran" target="blank">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="30"/>
-</a>
-<a href="https://www.codechef.com/users/ginge" target="blank">
-<img src="https://cdn.simpleicons.org/codechef" height="30"/>
-</a>
-</p>
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=RustamSheoran&show_icons=true&theme=dark&hide_border=true&count_private=true)
+
+Eight years of consistent contributions — 2018 through today.
 
 ---
-## 📈 Activity  
 
-Consistent work across systems programming, distributed systems, and backend infrastructure.  
-Focused on building from first principles rather than using abstractions.
+## 📫 Reach Me
+
+- 📧 [rustam98137@gmail.com](mailto:rustam98137@gmail.com)
+- 💼 [linkedin.com/in/rustamsheoran](https://linkedin.com/in/rustamsheoran)
+- 🏆 [CodeChef](https://www.codechef.com/users/ginge)
+- 💻 [github.com/RustamSheoran](https://github.com/RustamSheoran)

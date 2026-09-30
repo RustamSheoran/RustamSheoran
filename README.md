@@ -22,10 +22,10 @@ Systems monorepo in low-level Rust implementing Linux container isolation, an in
 ### [RESP-CPP](https://github.com/RustamSheoran/RESP-CPP)
 High-performance, single-threaded, event-driven Redis-compatible key-value store written in C++17.
 
-- **Event Reactor Core:** Leverages Linux `epoll` (`epoll_create1`, `epoll_ctl`, `epoll_wait`) to service thousands of concurrent client connections on a single thread with 0% idle CPU overhead.
+- **Event Reactor Core:** Leverages Linux `epoll` (`epoll_create1`, `epoll_ctl`, `epoll_wait`) to service thousands of concurrent client connections on a single thread.
 - **Zero-Copy Command Parser:** Tokenizes strict Redis Serialization Protocol (RESP) streams using `std::string_view` slices directly from client buffers without intermediate heap allocations.
-- **Network Tuning & Backpressure:** Enforces `TCP_NODELAY` to eliminate delayed-ACK stalls, non-blocking sockets (`O_NONBLOCK`), `SIGPIPE` shielding, and dynamic `EPOLLOUT` buffer drain management.
-
+- **Network Tuning & Backpressure:** Uses `TCP_NODELAY` to disable Nagle's algorithm, non-blocking sockets (`O_NONBLOCK`), `SIGPIPE` shielding, and dynamic `EPOLLOUT` buffer drain management.
+  
 **Stack:** `C++17` · `Linux epoll` · `POSIX Sockets` · `RESP Protocol`
 
 ---

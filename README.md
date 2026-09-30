@@ -11,17 +11,9 @@ I build systems from the ground up, with a focus on systems programming, Linux i
 ### [Helios](https://github.com/RustamSheoran/Helios)
 Systems monorepo in low-level Rust implementing Linux container isolation, an interactive Unix shell, and a custom global heap allocator.
 
-```
-Helios-Shell (AST / Job Control)
-  └─► Helios-Container (Namespaces / cgroups v2 / Seccomp BPF)
-        └─► Helios-Allocator (Best-Fit Free List & Slab Caches)
-              └─► Linux Kernel (clone, pivot_root, mmap/munmap)
-```
-
-- **Container Isolation:** UTS, Mount, IPC, PID, and Network namespace unsharing, private mount propagation, `pivot_root` jail, cgroups v2 resource limits, and Seccomp BPF filters
-- **Process Supervision:** Synchronizes child execution across namespace switches using synchronizing `O_CLOEXEC` pipes
-- **Interactive Shell:** REPL featuring recursive AST pipelines, I/O redirection, background job control tables, process groups (`setpgid`), and terminal handovers (`tcsetpgrp`)
-- **Custom Heap Allocator:** `GlobalAlloc` managing page-backed memory via intrusive doubly-linked Best-Fit free lists with physical coalescing and fixed-slot Slab caches over `mmap`/`munmap`
+- **Container Isolation Engine:** Implements UTS, Mount, IPC, PID, and Network namespace unsharing, recursive private mount propagation, `pivot_root` virtual filesystem jails, cgroups v2 resource accounting, and raw Seccomp BPF system call filters.
+- **Process Supervision & Job Control:** Synchronizes child execution across namespace switches using synchronizing `O_CLOEXEC` pipes, coupled with an interactive shell managing AST execution pipelines, I/O redirection, and process groups (`setpgid`, `tcsetpgrp`).
+- **Custom Global Allocator:** Custom `GlobalAlloc` managing page-backed memory via intrusive doubly-linked Best-Fit free lists with physical coalescing and fixed-slot Slab caches over `mmap`/`munmap`.
 
 **Stack:** `Rust` · `Linux Namespaces` · `cgroups v2` · `Seccomp BPF` · `Virtual Memory`
 
@@ -30,10 +22,9 @@ Helios-Shell (AST / Job Control)
 ### [RESP-CPP](https://github.com/RustamSheoran/RESP-CPP)
 High-performance, single-threaded, event-driven Redis-compatible key-value store written in C++17.
 
-- **Event Reactor Core:** Leverages Linux `epoll` (`epoll_create1`, `epoll_ctl`, `epoll_wait`) to service thousands of concurrent client connections with 0% idle CPU overhead
-- **Zero-Copy Parser:** Tokenizes strict RESP streams using `std::string_view` slices directly from client buffers without intermediate heap allocations
-- **Socket & Network Tuning:** Disables Nagle's algorithm (`TCP_NODELAY`), handles non-blocking socket states (`O_NONBLOCK`), and masks `SIGPIPE`
-- **Dynamic Backpressure:** Automatically registers `EPOLLOUT` on partial socket flushes and deregisters once drained to eliminate busy-spinning
+- **Event Reactor Core:** Leverages Linux `epoll` (`epoll_create1`, `epoll_ctl`, `epoll_wait`) to service thousands of concurrent client connections on a single thread with 0% idle CPU overhead.
+- **Zero-Copy Command Parser:** Tokenizes strict Redis Serialization Protocol (RESP) streams using `std::string_view` slices directly from client buffers without intermediate heap allocations.
+- **Network Tuning & Backpressure:** Enforces `TCP_NODELAY` to eliminate delayed-ACK stalls, non-blocking sockets (`O_NONBLOCK`), `SIGPIPE` shielding, and dynamic `EPOLLOUT` buffer drain management.
 
 **Stack:** `C++17` · `Linux epoll` · `POSIX Sockets` · `RESP Protocol`
 
@@ -42,10 +33,9 @@ High-performance, single-threaded, event-driven Redis-compatible key-value store
 ### [DWDP](https://github.com/RustamSheoran/DWDP-Triton-MoE-Inference-Engine)
 Distributed Weight Data Parallelism Mixture-of-Experts (MoE) high-throughput inference engine.
 
-- **Fused Triton Grouped-GEMM:** Single-launch MoE kernel fusing token gather, SwiGLU activation, and down-projection, cutting kernel launches from 24+ down to 1 per layer
-- **Native FP8 Precision:** Full FP8 (E4M3 / E5M2) execution with fine-grained per-expert micro-scaling and FP32 Tensor Core accumulation
-- **CUDA Graph Replay:** Captures static GPU execution topologies to replay token decode passes with zero CPU call overhead (0 ms CPU tax)
-- **PagedAttention Memory Manager:** Eliminates VRAM fragmentation via fixed physical KV-cache page allocation (`block_size=16`) and automated precision fallbacks
+- **Fused Triton Grouped-GEMM:** Single-launch MoE kernel fusing token gather, SwiGLU activation, and down-projection in `@triton.jit`, cutting CUDA kernel launches from 24+ down to 1 per layer.
+- **Native FP8 Precision & Micro-Scaling:** Full FP8 (E4M3 / E5M2) execution with fine-grained per-expert micro-scaling factors and FP32 Tensor Core accumulation.
+- **Runtime Graph & Memory Manager:** Static CUDA Graph replay engine eliminating CPU call overhead, paired with PagedAttention block-wise KV-cache allocation to eliminate VRAM fragmentation.
 
 **Stack:** `Triton` · `CUDA` · `Python` · `C++20` · `FP8` · `PagedAttention`
 
@@ -54,10 +44,9 @@ Distributed Weight Data Parallelism Mixture-of-Experts (MoE) high-throughput inf
 ### [simd](https://github.com/RustamSheoran/simd)
 Hand-written AArch64 NEON SIMD dot product benchmarked against `-O3` vectorizing compilers.
 
-- **Hand-Optimized Assembly:** Written directly in AArch64 ELF assembly (`neon_dot.s`) to strictly control register allocation, widening loads, and accumulator dependencies
-- **Loop Unrolling & Widening:** Unrolls main loop across 32 elements using 8 independent two-lane 64-bit accumulators (`smlal`/`smlal2`) to maximize pipeline throughput
-- **Tail Path Handling:** Reduces accumulators into scalar results and processes non-aligned array tails using `smaddl` on 1,000,003-element arrays
-- **Toolchain & Verification:** Cross-compiled for Linux AArch64 and verified via QEMU user mode with remote GDB inspection of vector registers (`v0` to `v19`)
+- **Hand-Optimized Assembly:** Written directly in AArch64 ELF assembly (`neon_dot.s`) to strictly control register allocation, widening loads, and accumulator dependency chains.
+- **Loop Unrolling & Widening:** Unrolls main loop across 32 elements using 8 independent two-lane 64-bit accumulators (`smlal`/`smlal2`) to maximize hardware pipeline throughput.
+- **Tail Path & Verification:** Reduces vector accumulators into scalar results with `smaddl` tail handling on 1,000,003 elements, verified under QEMU user mode with remote GDB register inspection.
 
 **Stack:** `AArch64 Assembly` · `ARM NEON` · `C++` · `QEMU` · `GDB`
 
@@ -72,10 +61,10 @@ Hand-written AArch64 NEON SIMD dot product benchmarked against `-O3` vectorizing
 
 ## 🧰 Technical Arsenal
 
-- **Systems & Kernels:** `Linux Namespaces` · `cgroups v2` · `Seccomp BPF` · `POSIX` · `x86_64 / AArch64 Assembly`
-- **Languages:** `C` · `C++17/20` · `Rust` · `Python`
-- **Performance & GPU:** `CUDA` · `OpenAI Triton` · `ARM NEON` · `SIMD` · `FP8` · `CUDA Graphs`
-- **Infrastructure & Tooling:** `Linux / epoll` · `Docker` · `GDB` · `QEMU` · `ASan / UBSan` · `Make`
+- **Systems & Kernels:** `Linux (Namespaces, cgroups v2, Seccomp, epoll)` · `POSIX` · `x86_64 / AArch64 Assembly`
+- **Languages & Toolchains:** `C` · `C++17/20` · `Rust` · `Python` · `Make`
+- **Performance & Acceleration:** `CUDA` · `OpenAI Triton` · `ARM NEON` · `SIMD` · `FP8` · `CUDA Graphs` · `PagedAttention`
+- **Debugging & Runtime:** `GDB` · `QEMU` · `AddressSanitizer (ASan/UBSan)` · `Docker`
 
 ---
 
@@ -83,6 +72,5 @@ Hand-written AArch64 NEON SIMD dot product benchmarked against `-O3` vectorizing
 
 - **Email:** [rustam98137@gmail.com](mailto:rustam98137@gmail.com)
 - **LinkedIn:** [linkedin.com/in/rustamsheoran](https://linkedin.com/in/rustamsheoran)
-- **GitHub:** [github.com/RustamSheoran](https://github.com/RustamSheoran)
 - **Codeforces:** [codeforces.com/profile/adarak](https://codeforces.com/profile/adarak)
 - **LeetCode:** [leetcode.com/u/RustamSheoran](https://leetcode.com/u/RustamSheoran/)
